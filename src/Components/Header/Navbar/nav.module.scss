@@ -1,0 +1,126 @@
+.bacdrop {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.253);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    z-index: 9;
+    top: 0;
+
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto;
+        padding: 0px 0;
+
+        .logo {
+            cursor: pointer;
+            img{
+                width: 120px;
+            }
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            form {
+                background: rgba(0, 0, 0, .75);
+                width: 30rem;
+                padding: 8px;
+                display: flex;
+                border-radius: 100px;
+                align-items: center;
+                border: 1px solid #262626;
+
+                i {
+                    color: rgba(255, 255, 255, 0.637);
+                    margin-left: 5px;
+                    padding: 3px;
+                }
+
+                input {
+                    font-family: 'Red Hat Display', sans-serif;
+                    width: 100%;
+                    margin-left: 10px;
+                    padding: 5px;
+                    border: none;
+                    background-color: transparent;
+                    outline: none;
+                    color: white;
+                }
+
+            }
+
+            form:focus {
+                background-color: red;
+            }
+
+
+            p {
+                color: rgba(255, 255, 255, 0.226);
+            }
+
+            .burger_menu {
+                border: none;
+                background-color: transparent;
+                color: white;
+                font-size: 17px;
+                cursor: pointer;
+            }
+
+        }
+    }
+}
+
+.old_Navbar {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+
+    .nav {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        place-items: center;
+
+        padding: 18px 0;
+
+        .help {
+            border: none;
+            background-color: rgba(0, 0, 0, 0.226);
+            backdrop-filter: blur(1px);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            cursor: pointer;
+  font-family: 'Red Hat Display', sans-serif;
+
+            i {
+                border: 1px solid white;
+                border-radius: 50%;
+                padding: 3px 4.5px;
+                font-size: 10px;
+            }
+
+            span {
+                margin-left: 10px;
+            }
+        }
+
+        .burger_menu {
+            border: none;
+            background-color: transparent;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,150 @@
+.card_bacdrop {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.719);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    top: 0;
+    overflow-y: scroll;
+
+    .cards {
+        width: 90%;
+        margin: 0 auto;
+        padding: 25px 30px;
+
+        .close {
+            display: flex;
+            justify-content: end;
+            text-align: end;
+
+            i {
+                position: relative;
+                left: 40px;
+                padding: 8px 9.5px;
+                border-radius: 5px;
+                font-size: 25px;
+                cursor: pointer;
+
+                color: rgba(255, 255, 255, 0.548);
+
+            }
+
+            i:hover {
+                color: white;
+            }
+        }
+
+        .image_account {
+
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+
+            .image {
+                display: flex;
+                justify-content: center;
+                margin-left: 55px;
+                width: 80vh;
+                height: 80vh;
+
+
+                .resize {
+                    // right: 32.5%;
+                    position: absolute;
+                    padding: 10px;
+                    text-align: center;
+
+                    i {
+                        text-align: end;
+                        background-color: rgba(0, 0, 0, 0.582);
+                        padding: 7px;
+                        border-radius: 5px;
+                        font-size: 15px;
+                        cursor: pointer;
+                    }
+                }
+
+                img {
+                    border: 1px solid rgba(255, 255, 255, 0.322);
+                    border-radius: 5px;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .account {
+                display: flex;
+                flex-direction: column;
+                place-items: center;
+                gap: 25px;
+                cursor: pointer;
+
+                .image_desc {
+                    display: flex;
+                    justify-content: center;
+
+                    img {
+                        border: 1px solid rgba(255, 255, 255, 0.445);
+                        width: 70%;
+                        border-radius: 50%;
+                    }
+                }
+
+                .info {
+                    text-align: center;
+                    width: 30%;
+                    padding: 10px 15px;
+                    background-color: white;
+                    color: black;
+                    border-radius: 8px;
+                    align-items: center;
+                    cursor: pointer;
+                }
+
+                .hover_info {
+                    position: absolute;
+                    background-color: black;
+                    width: 200px;
+                    right: 10%;
+                    top: 28%;
+                    // color:white;
+                    padding: 8px;
+                    font-size: 12px;
+                    border-radius: 8px;
+
+                    span {
+                        padding: 5px;
+                    }
+
+                    p {
+                        margin-top: 5px;
+                        background-color: rgb(53, 53, 53);
+                        color: black;
+                        border-radius: 5px;
+                        padding: 5px;
+                    }
+                }
+
+            }
+        }
+
+        .content {
+            h4 {
+                text-align: center;
+                margin-top: 25px;
+                color: rgb(122, 122, 122);
+            }
+
+            .related_image {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                grid-gap: 20px;
+                margin-top: 5rem;
+            }
+        }
+
+
+    }
+}

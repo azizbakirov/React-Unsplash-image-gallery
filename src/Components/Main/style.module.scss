@@ -1,0 +1,20 @@
+.card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 20px;
+    grid-auto-flow: dense;
+    margin-top: 2rem;
+
+}
+
+.load {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 95%;
+    z-index: 15;
+}

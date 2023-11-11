@@ -1,0 +1,75 @@
+.bacdrop {
+    width: 100%;
+    z-index: 9;
+
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto;
+        // padding: 20px 0;
+        // background-color: red;
+        // padding-top: 20px;
+
+        .logo {
+            img{
+                width: 120px;
+            }
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            form {
+                background: rgba(0, 0, 0, .75);
+                width: 30rem;
+                padding: 8px;
+                display: flex;
+                border-radius: 100px;
+                align-items: center;
+                border: 1px solid #262626;
+
+                i {
+                    color: rgba(255, 255, 255, 0.637);
+                    margin-left: 5px;
+                    padding: 3px;
+                }
+
+                input {
+                    font-family: 'Red Hat Display', sans-serif;
+                    width: 100%;
+                    margin-left: 10px;
+                    padding: 5px;
+                    border: none;
+                    background-color: transparent;
+                    outline: none;
+                    color: white;
+                }
+
+            }
+
+            form:focus {
+                background-color: red;
+            }
+
+
+            p {
+                color: rgba(255, 255, 255, 0.226);
+            }
+
+            .burger_menu {
+                border: none;
+                background-color: transparent;
+                color: white;
+                font-size: 17px;
+                cursor: pointer;
+            }
+
+        }
+    }
+}

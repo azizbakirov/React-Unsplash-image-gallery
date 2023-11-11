@@ -1,0 +1,66 @@
+.header {
+    background-image: url(../../../src/Assets/BGImage/bg.jpg);
+    filter: brightness(.8);
+    object-fit: cover;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 450px;
+       
+    .search_header {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        place-items: center;
+        height: 100%;
+
+
+
+        h3 {
+            margin: 10px;
+            font-size: 30px;
+        }
+
+        p {
+            margin: 10px;
+            margin-bottom: 50px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        form {
+            position: relative;
+            width: 40%;
+
+            i {
+                position: absolute;
+                top: 20px;
+                left: -20px;
+                color: #cccccc;
+                z-index: 2;
+            }
+
+            input {
+                background: rgba(0, 0, 0, .75);
+                // width: 30rem;
+                width: 100%;
+                padding: 15px 40px;
+                border-radius: 10px;
+                border: none;
+                outline: 2px solid transparent;
+                font-family: 'Red Hat Display', sans-serif;
+                color: white;
+                font-size: 18px;
+                font-weight: 600;
+                position: relative;
+                right: 35px;
+
+            }
+
+            input:focus {
+                outline: 3.5px solid rgba(0, 0, 0, 0.349);
+                border: none;
+            }
+        }
+    }
+}

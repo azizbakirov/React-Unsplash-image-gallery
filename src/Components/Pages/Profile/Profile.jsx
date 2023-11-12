@@ -1,26 +1,90 @@
-import style from "./profile.module.scss"
-import DynamicNavbar from "../../Header/DynamicNavbar/DynamicNavbar"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { GetUser } from "../../../Services/Unsplash.service";
+import DynamicNavbar from "../../Header/DynamicNavbar/DynamicNavbar";
+import Card from "../../Main/Card/Card";
+import style from "./profile.module.scss";
 
-function Profile({setMenuActive, menuActive}) {
-  const key = "IcHl7zXAYsrJd5R0rB_SZ34fFquPdsGXRM_tgiMaDPg";
-  const url = `https://api.unsplash.com/users/tolga__/photos?client_id=${key}&per_page=50`;
+function Profile({
+  setMenuActive,
+  menuActive,
+  setDataSave,
+  clickedId,
+  setClickedId,
+  userName,
+}) {
+  const [user, setUser] = useState(null);
 
-    useEffect(() => {
-        fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
-    },[])    
-
-  // /users/:username
+  userName
+    ? useEffect(() => {
+        GetUser(userName).then((data) => {
+          setUser(data.data);
+        });
+      }, [userName])
+    : "";
 
   return (
     <div>
       <DynamicNavbar setMenuActive={setMenuActive} menuActive={menuActive} />
+
+      <div className={style.profile}>
+        <div className={style.user}>
+          <div className={style.user_info}>
+            <img src={user?.profile_image?.large} alt="" />
+            <h4>{user?.name}</h4>
+            <p className={style.desc}>{user?.bio}</p>
+            <p className={style.location}>{user?.location}</p>
+            <div className={style.social}>
+              {user?.social?.instagram_username && (
+                <a
+                  target="_blank"
+                  href={`https://www.instagram.com/${user?.social?.instagram_username}`}
+                >
+                  <i className="fa-brands fa-square-instagram"></i>
+                </a>
+              )}
+              {user?.social?.twitter_username && (
+                <a
+                  target="_blank"
+                  href={`https://www.x.com/${user?.social?.twitter_username}`}
+                >
+                  <i className="fa-brands fa-x-twitter"></i>
+                </a>
+              )}
+              {user?.social?.portfolio_url && (
+                <a target="_blank" href={user?.social?.portfolio_url}>
+                  <i className="fa-solid fa-camera-retro"></i>
+                </a>
+              )}
+              {user?.social?.paypal_email && (
+                <a
+                  target="_blank"
+                  href={`https://www.instagram.com/${user?.social?.paypal_email}`}
+                >
+                  <i className="fa-brands fa-paypal"></i>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className={style.user_image}>
+          {user?.tags?.aggregated?.map((data, idx) => (
+            <>
+              {data?.source && (
+                <Card
+                  key={idx}
+                  user={user}
+                  data={data}
+                  setDataSave={setDataSave}
+                  clickedId={clickedId}
+                  setClickedId={setClickedId}
+                />
+              )}
+            </>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
 
-export default Profile
+export default Profile;

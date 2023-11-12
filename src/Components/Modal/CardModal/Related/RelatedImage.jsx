@@ -19,7 +19,7 @@ function RelatedImage({setDataSave,clickedId, data, setClickedId }) {
       whileTap={{ scale: 0.9 }}
       onClick={() => handleClick(data.id)}
     >
-      <div className={style.cards}>
+      <a href="#top" className={style.cards}>
         <img src={data?.urls?.regular} alt="" />
         <div className={style.title_account}>
           <div className={style.account}>
@@ -28,7 +28,7 @@ function RelatedImage({setDataSave,clickedId, data, setClickedId }) {
           </div>
           <p>{data?.tags[0]?.title?.slice(0, 20)}</p>
         </div>
-      </div>
+      </a>
     </motion.div>
   );
 }

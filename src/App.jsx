@@ -8,6 +8,7 @@ import CardModal from "./Components/Modal/CardModal/CardModal";
 import About from "./Components/Pages/About/About";
 import Contact from "./Components/Pages/Contact/Contact";
 import Profile from "./Components/Pages/Profile/Profile";
+import { GetAllPhotos, GetUser } from "./Services/Unsplash.service";
 
 function App() {
   const [page, setPage] = useState(1); //data page value
@@ -18,6 +19,14 @@ function App() {
   const [dataSave, setDataSave] = useState(""); //save new Clicked data
   const [clickedId, setClickedId] = useState(null);
   const [menuActive, setMenuActive] = useState(false);
+  // const [userName, setUserName] = useState("");
+
+  const [userName, setUserName] = useState(
+    JSON.parse(localStorage.getItem("data")) || "",
+  );
+
+  console.log(userName);
+
 
   document.body.addEventListener("keyup", (e) => {
     if (e.key === "Escape") {
@@ -33,18 +42,16 @@ function App() {
     });
   };
 
-  const key = "IcHl7zXAYsrJd5R0rB_SZ34fFquPdsGXRM_tgiMaDPg";
-  const url = `https://api.unsplash.com/search/photos/?client_id=${key}&query=${search}&per_page=20&page=${page}`;
-
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setSave((prev) => [...prev, ...data.results]);
-        setLoader(false);
-      })
-      .finally();
-  }, [url]);
+    GetAllPhotos(search, page)
+      .then(
+        (data) => setSave((prev) => [...prev, ...data.data.results]),
+        setLoader(false),
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [search, page]);
 
   const handleInfinteScrol = () => {
     if (
@@ -61,7 +68,17 @@ function App() {
     return () => window.removeEventListener("scroll", handleInfinteScrol);
   }, []);
 
-  document.body.style.overflow = menuActive || dataSave ? "hidden" : "scroll";
+  document.body.style.overflow = `${
+    menuActive || dataSave ? "hidden" : "scroll"
+  }`;
+
+
+
+  // Localstorage save
+
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(userName));
+  }, [userName]);
 
 
   return (
@@ -117,6 +134,7 @@ function App() {
                 loader={loader}
                 submitBtn={submitBtn}
                 save={save}
+                setUserName={setUserName}
               />
             </>
           }
@@ -136,7 +154,15 @@ function App() {
         <Route
           path="/profile/:id"
           element={
-            <Profile setMenuActive={setMenuActive} menuActive={menuActive} />
+            <Profile
+              setDataSave={setDataSave}
+              setMenuActive={setMenuActive}
+              setClickedId={setClickedId}
+              menuActive={menuActive}
+              clickedId={clickedId}
+              goToTop={goToTop}
+              userName={userName}
+            />
           }
         />
       </Routes>

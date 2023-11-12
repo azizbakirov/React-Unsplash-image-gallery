@@ -1,5 +1,5 @@
-import { Component, useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import style from "./modal.module.scss";
 import RelatedImage from "./Related/RelatedImage";
 
@@ -8,31 +8,20 @@ function CardModal({ dataSave, setDataSave, setClickedId, clickedId }) {
   const [hover, setHover] = useState(false);
   const [relatedImage, setRelatedImage] = useState([]);
 
-  const para = useParams()
-
-  console.log(para);
-
-
-
   const close = (e) => {
     setClickedId("");
     setDataSave("");
   };
   const handleClickDiv = (e) => {
-    e.stopPropagation();
+    e?.stopPropagation();
   };
 
-  const handleEnter = () => {
-    setHover("");
-  };
   const handleLeave = () => {
     setHover(false);
   };
-  const handleAccountClick = () => {
-    handleClickDiv()
-    setDataSave("")
-
-  }
+  const handleAccountClick = (e) => {
+    handleClickDiv();
+  };
 
   const key = "IcHl7zXAYsrJd5R0rB_SZ34fFquPdsGXRM_tgiMaDPg";
 
@@ -47,13 +36,11 @@ function CardModal({ dataSave, setDataSave, setClickedId, clickedId }) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
-  console.log(dataSave.user);
+  }, [url]);
 
   return (
     <div className={style.card_bacdrop} onClick={close}>
-      <div className={style.cards} onClick={close}>
+      <div className={style.cards} onClick={close} id="top">
         <div className={style.close}>
           <i className="fa-solid fa-xmark" onClick={close}></i>
         </div>
@@ -76,18 +63,15 @@ function CardModal({ dataSave, setDataSave, setClickedId, clickedId }) {
             </div>
             <img src={dataSave.urls.regular} alt="" />
           </div>
-          <Link
-            to={"/profile/"+dataSave.user.id}
-            className={style.account}
-            onClick={handleAccountClick}
-          >
-            <div
+          <div className={style.account} onClick={handleAccountClick}>
+            <Link
+              to={"/profile/" + dataSave?.user?.id}
               className={style.image_desc}
               onMouseEnter={() => setHover("profile")}
               onMouseLeave={handleLeave}
             >
               <img src={dataSave.user.profile_image.medium} alt="" />
-            </div>
+            </Link>
             {hover === "profile" && (
               <div
                 style={{
@@ -136,15 +120,16 @@ function CardModal({ dataSave, setDataSave, setClickedId, clickedId }) {
                 <i className="fa-solid fa-arrow-down"></i>
               </a>
             </div>
-          </Link>
+          </div>
         </div>
 
         <div className={style.content}>
           <h4>Related images</h4>
 
           <div className={style.related_image} onClick={handleClickDiv}>
-            {relatedImage.map((data) => (
+            {relatedImage.map((data, idx) => (
               <RelatedImage
+                key={idx}
                 setDataSave={setDataSave}
                 clickedId={clickedId}
                 data={data}

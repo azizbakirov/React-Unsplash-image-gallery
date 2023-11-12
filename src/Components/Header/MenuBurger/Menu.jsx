@@ -25,7 +25,7 @@ function Menu({ setMenuActive }) {
             onClick={() => setMenuActive((old) => !old)}
           ></i>
           <div className={style.category_menu}>
-            <Link onClick={() => setMenuActive(false)}>All Image</Link>
+            <Link to="/" onClick={() => setMenuActive(false)}>All Image</Link>
             <Link onClick={() => setMenuActive(false)}>Images</Link>
             <Link onClick={() => setMenuActive(false)}>Creators</Link>
             <Link onClick={() => setMenuActive(false)} to="/about">

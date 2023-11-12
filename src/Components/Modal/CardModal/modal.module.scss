@@ -9,11 +9,13 @@
     overflow-y: scroll;
 
     .cards {
+        text-decoration: none;
         width: 90%;
         margin: 0 auto;
         padding: 25px 30px;
 
         .close {
+            
             display: flex;
             justify-content: end;
             text-align: end;

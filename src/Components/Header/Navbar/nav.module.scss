@@ -148,10 +148,14 @@
 
                 }
             }
+
+        }
+        .burger_menu {
+            font-size: 20px;
         }
     }
 
-    
+
 
 }
 
@@ -175,6 +179,9 @@
 
                 }
             }
+                        .burger_menu {
+                            font-size: 24px;
+                        }
 
             /* put your css styles in here */
         }
@@ -215,16 +222,16 @@
     }
 
     .old_Navbar {
-       .nav{
-        .help {
+        .nav {
+            .help {
                 padding: 6px 10px;
                 font-size: 10px;
 
-                i{
+                i {
                     font-size: 8px;
                 }
             }
-       }
+        }
     }
 
     /* put your css styles in here */

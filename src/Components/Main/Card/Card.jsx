@@ -13,7 +13,9 @@ function Card({
   const handleClikId = (id) => {
     if (id === data.id) {
       setDataSave(data);
-      setUserName(data?.user?.username);
+      {
+        setUserName && setUserName(data?.user?.username);
+      }
     }
   };
 

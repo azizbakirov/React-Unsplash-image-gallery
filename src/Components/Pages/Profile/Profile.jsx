@@ -14,13 +14,11 @@ function Profile({
 }) {
   const [user, setUser] = useState(null);
 
-  userName
-    ? useEffect(() => {
-        GetUser(userName).then((data) => {
-          setUser(data.data);
-        });
-      }, [userName])
-    : "";
+    useEffect(() => {
+      GetUser("aziz").then((data) => {
+        setUser(data.data);
+      });
+    }, [userName]);
 
   return (
     <div>

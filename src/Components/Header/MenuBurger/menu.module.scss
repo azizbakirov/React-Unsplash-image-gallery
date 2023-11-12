@@ -70,3 +70,85 @@
         }
     }
 }
+
+
+
+@media all and (min-width:569px) and (max-width: 768px) {}
+
+@media all and (min-width:481px) and (max-width: 568px) {
+    .menu {
+    
+            .menu_wrapper {
+                justify-content: center;
+    
+    
+                a {
+    
+                    img {
+                        display: none;
+                        width: 180px;
+                    }
+                }
+    
+                .category_xmark {
+    
+                    i {
+                        left: 150px;
+                    }
+    
+    
+                    .category_menu {
+    
+                        a {
+                            font-size: 30px;
+                            text-align: center;
+                        }
+    
+                    }
+    
+    
+                }
+            }
+        }
+}
+
+@media all and (min-width:321px) and (max-width: 480px) {
+
+
+    .menu {
+
+        .menu_wrapper {
+            justify-content: center;
+
+
+            a {
+
+                img {
+                    display: none;
+                    width: 180px;
+                }
+            }
+
+            .category_xmark {
+
+                i {
+                    left: 150px;
+                }
+
+
+                .category_menu {
+
+                    a {
+                        font-size: 30px;
+                        text-align: center;
+                    }
+
+                }
+
+
+            }
+        }
+    }
+
+    /* put your css styles in here */
+}

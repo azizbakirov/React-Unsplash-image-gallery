@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { GetAllPhotos } from "../../../Services/Unsplash.service";
 import style from "./modal.module.scss";
 import RelatedImage from "./Related/RelatedImage";
 
@@ -23,20 +24,18 @@ function CardModal({ dataSave, setDataSave, setClickedId, clickedId }) {
     handleClickDiv();
   };
 
-  const key = "IcHl7zXAYsrJd5R0rB_SZ34fFquPdsGXRM_tgiMaDPg";
-
-  const url = `https://api.unsplash.com/search/photos/?client_id=${key}&query=${dataSave?.tags[0]?.title}&per_page=6&page=1`;
-
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setRelatedImage(data.results);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [url]);
+  {
+    dataSave?.tags[0] &&
+      useEffect(() => {
+        GetAllPhotos(`${dataSave?.tags[0]?.title}`, 1)
+          .then((data) => {
+            setRelatedImage(data.data.results);
+          })
+          .catch((err) => {
+            console.log("err", err);
+          });
+      }, [dataSave?.tags[0]?.title]);
+  }
 
   return (
     <div className={style.card_bacdrop} onClick={close}>

@@ -8,7 +8,7 @@ import CardModal from "./Components/Modal/CardModal/CardModal";
 import About from "./Components/Pages/About/About";
 import Contact from "./Components/Pages/Contact/Contact";
 import Profile from "./Components/Pages/Profile/Profile";
-import { GetAllPhotos, GetUser } from "./Services/Unsplash.service";
+import { GetAllPhotos } from "./Services/Unsplash.service";
 
 function App() {
   const [page, setPage] = useState(1); //data page value
@@ -17,17 +17,15 @@ function App() {
   const [submitBtn, setSubmitBtn] = useState(false); // submit btn remove header
   const [loader, setLoader] = useState(true); //loader state
   const [dataSave, setDataSave] = useState(""); //save new Clicked data
-  const [clickedId, setClickedId] = useState(null);
-  const [menuActive, setMenuActive] = useState(false);
-  // const [userName, setUserName] = useState("");
+  const [clickedId, setClickedId] = useState(null); //clicked id save
+  const [menuActive, setMenuActive] = useState(false); //burgermenu active state
 
+  //localstorage data
   const [userName, setUserName] = useState(
     JSON.parse(localStorage.getItem("data")) || "",
   );
 
-  console.log(userName);
-
-
+  // close ESC btn func
   document.body.addEventListener("keyup", (e) => {
     if (e.key === "Escape") {
       setClickedId("");
@@ -35,6 +33,7 @@ function App() {
     }
   });
 
+  // Top btn func
   const goToTop = () => {
     window.scrollTo({
       top: 0,
@@ -42,6 +41,7 @@ function App() {
     });
   };
 
+  // GetAll photos api request
   useEffect(() => {
     GetAllPhotos(search, page)
       .then(
@@ -53,6 +53,7 @@ function App() {
       });
   }, [search, page]);
 
+  // Infinte Scroll func
   const handleInfinteScrol = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop + 1 >=
@@ -63,23 +64,21 @@ function App() {
     }
   };
 
+  // infinte scroll window location
   useEffect(() => {
     window.addEventListener("scroll", handleInfinteScrol);
     return () => window.removeEventListener("scroll", handleInfinteScrol);
   }, []);
 
+  // modal menu open scroll none func
   document.body.style.overflow = `${
     menuActive || dataSave ? "hidden" : "scroll"
   }`;
 
-
-
   // Localstorage save
-
   useEffect(() => {
     localStorage.setItem("data", JSON.stringify(userName));
   }, [userName]);
-
 
   return (
     <>
@@ -88,15 +87,13 @@ function App() {
           <Menu setMenuActive={setMenuActive} menuActive={menuActive} />
         )}
       </>
-      {dataSave ? (
+      {dataSave && (
         <CardModal
           setClickedId={setClickedId}
           dataSave={dataSave}
           setDataSave={setDataSave}
           clickedId={clickedId}
         />
-      ) : (
-        ""
       )}
 
       <Routes>

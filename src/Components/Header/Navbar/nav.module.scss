@@ -17,7 +17,8 @@
 
         .logo {
             cursor: pointer;
-            img{
+
+            img {
                 width: 120px;
             }
         }
@@ -101,7 +102,7 @@
             border-radius: 30px;
             font-size: 12px;
             cursor: pointer;
-  font-family: 'Red Hat Display', sans-serif;
+            font-family: 'Red Hat Display', sans-serif;
 
             i {
                 border: 1px solid white;
@@ -123,4 +124,108 @@
             cursor: pointer;
         }
     }
+}
+
+
+@media all and (min-width:569px) and (max-width: 768px) {
+    .bacdrop {
+
+        .navbar {
+
+            .logo {
+                cursor: pointer;
+
+                img {
+                    width: 100px;
+                }
+            }
+
+            .search {
+
+                form {
+                    width: 20rem;
+                    padding: 4px;
+
+                }
+            }
+        }
+    }
+
+    
+
+}
+
+@media all and (min-width:481px) and (max-width: 568px) {
+    .bacdrop {
+
+        .navbar {
+
+            .logo {
+
+                img {
+                    width: 80px;
+                }
+            }
+
+            .search {
+
+                form {
+                    width: 17rem;
+                    padding: 4px;
+
+                }
+            }
+
+            /* put your css styles in here */
+        }
+    }
+
+}
+
+@media all and (min-width:321px) and (max-width: 480px) {
+    .bacdrop {
+
+        .navbar {
+
+            .logo {
+
+                img {
+                    width: 80px;
+                }
+            }
+
+            .search {
+
+                form {
+                    width: 12rem;
+                    padding: 4px;
+
+                    input {
+                        margin-left: 2px;
+                    }
+
+                    i {
+                        font-size: 10px;
+                    }
+                }
+            }
+
+            /* put your css styles in here */
+        }
+    }
+
+    .old_Navbar {
+       .nav{
+        .help {
+                padding: 6px 10px;
+                font-size: 10px;
+
+                i{
+                    font-size: 8px;
+                }
+            }
+       }
+    }
+
+    /* put your css styles in here */
 }

@@ -27,7 +27,7 @@ function Profile({
   return (
     <div>
       {loading ? (
-        <h1>Laoding....</h1>
+        <h1 style={{textAlign: "center"}}>Laoding....</h1>
       ) : (
         <>
           <DynamicNavbar

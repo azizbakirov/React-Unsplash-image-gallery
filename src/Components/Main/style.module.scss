@@ -4,6 +4,7 @@
     grid-gap: 20px;
     grid-auto-flow: dense;
     margin-top: 2rem;
+    overflow-x: hidden;
 
 }
 
@@ -15,6 +16,7 @@
     width: 100%;
     left: 0;
     right: 0;
-    top: 95%;
+    top: 96%;
     z-index: 15;
+    overflow-x: hidden;
 }

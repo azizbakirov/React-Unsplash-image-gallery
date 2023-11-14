@@ -3,6 +3,7 @@ import { GetUser } from "../../../Services/Unsplash.service";
 import DynamicNavbar from "../../Header/DynamicNavbar/DynamicNavbar";
 import Card from "../../Main/Card/Card";
 import style from "./profile.module.scss";
+import { SpinnerLoading } from "../../../Assets";
 
 function Profile({
   setMenuActive,
@@ -13,21 +14,23 @@ function Profile({
   userName,
 }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-      setLoading(true)
-      GetUser(userName).then((data) => {
-        setLoading(false)
+  useEffect(() => {
+    GetUser(userName)
+      .then((data) => {
+        setLoading(false);
         setUser(data.data);
-
-      });
-    }, [userName]);
+      })
+      .finally();
+  }, [userName]);
 
   return (
     <div>
       {loading ? (
-        <h1 style={{textAlign: "center"}}>Laoding....</h1>
+        <div className={style.loading}>
+          <SpinnerLoading />
+        </div>
       ) : (
         <>
           <DynamicNavbar

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { GetAllPhotos } from "../../../Services/Unsplash.service";
 import style from "./modal.module.scss";
+import { SpinnerLoading } from "../../../Assets";
 import RelatedImage from "./Related/RelatedImage";
 
 function CardModal({ dataSave, setDataSave, setClickedId, clickedId }) {
@@ -69,7 +70,7 @@ function CardModal({ dataSave, setDataSave, setClickedId, clickedId }) {
               onMouseEnter={() => setHover("profile")}
               onMouseLeave={handleLeave}
             >
-              <img src={dataSave.user.profile_image.medium} alt="" />
+              <img src={dataSave.user.profile_image.small} alt="" />
             </Link>
             {hover === "profile" && (
               <div

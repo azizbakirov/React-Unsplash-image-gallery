@@ -9,6 +9,7 @@ import About from "./Components/Pages/About/About";
 import Contact from "./Components/Pages/Contact/Contact";
 import Profile from "./Components/Pages/Profile/Profile";
 import { GetAllPhotos } from "./Services/Unsplash.service";
+import { SpinnerLoading } from "./Assets";
 
 function App() {
   const [page, setPage] = useState(1); //data page value
@@ -19,6 +20,7 @@ function App() {
   const [dataSave, setDataSave] = useState(""); //save new Clicked data
   const [clickedId, setClickedId] = useState(null); //clicked id save
   const [menuActive, setMenuActive] = useState(false); //burgermenu active state
+  const [homePageLoader, setHomePageLoader] = useState(true);
 
   //localstorage data
   const [userName, setUserName] = useState(
@@ -43,10 +45,13 @@ function App() {
 
   // GetAll photos api request
   useEffect(() => {
+    setLoader(true);
     GetAllPhotos(search, page)
       .then(
         (data) => setSave((prev) => [...prev, ...data.data.results]),
-        setLoader(false),
+        setTimeout(() => {
+          setLoader(false);
+        }, 1000),
       )
       .catch((err) => {
         console.log(err);
@@ -71,7 +76,7 @@ function App() {
   }, []);
 
   // modal menu open scroll none func
-  document.body.style.overflow = `${
+  document.body.style.overflowY = `${
     menuActive || dataSave ? "hidden" : "scroll"
   }`;
 
@@ -80,89 +85,104 @@ function App() {
     localStorage.setItem("data", JSON.stringify(userName));
   }, [userName]);
 
+  setTimeout(() => {
+    setHomePageLoader(false);
+  }, 1000);
+
   return (
     <>
-      <>
-        {menuActive && (
-          <Menu setMenuActive={setMenuActive} menuActive={menuActive} />
-        )}
-      </>
-      {dataSave && (
-        <CardModal
-          setClickedId={setClickedId}
-          dataSave={dataSave}
-          setDataSave={setDataSave}
-          clickedId={clickedId}
-        />
-      )}
+      {homePageLoader ? (
+        <div className="loading">
+          <SpinnerLoading />
+        </div>
+      ) : (
+        <>
+          <>
+            {menuActive && (
+              <Menu setMenuActive={setMenuActive} menuActive={menuActive} />
+            )}
+          </>
+          {dataSave && (
+            <CardModal
+              setClickedId={setClickedId}
+              dataSave={dataSave}
+              setDataSave={setDataSave}
+              clickedId={clickedId}
+            />
+          )}
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Nav
-                goToTop={goToTop}
-                setSave={setSave}
-                setSearch={setSearch}
-                search={search}
-                setSubmitBtn={setSubmitBtn}
-                submitBtn={submitBtn}
-                setMenuActive={setMenuActive}
-                menuActive={menuActive}
-              />
-              {submitBtn ? (
-                ""
-              ) : (
+          <Routes>
+            <Route
+              path="/"
+              element={
                 <>
-                  <Header
-                    setSearch={setSearch}
-                    setPage={setPage}
-                    page={page}
+                  <Nav
+                    goToTop={goToTop}
                     setSave={setSave}
+                    setSearch={setSearch}
+                    search={search}
                     setSubmitBtn={setSubmitBtn}
+                    submitBtn={submitBtn}
+                    setMenuActive={setMenuActive}
+                    menuActive={menuActive}
+                  />
+                  {submitBtn ? (
+                    ""
+                  ) : (
+                    <>
+                      <Header
+                        setSearch={setSearch}
+                        setPage={setPage}
+                        page={page}
+                        setSave={setSave}
+                        setSubmitBtn={setSubmitBtn}
+                      />
+                    </>
+                  )}
+                  <Main
+                    setClickedId={setClickedId}
+                    clickedId={clickedId}
+                    setDataSave={setDataSave}
+                    loader={loader}
+                    submitBtn={submitBtn}
+                    save={save}
+                    setUserName={setUserName}
                   />
                 </>
-              )}
-              <Main
-                setClickedId={setClickedId}
-                clickedId={clickedId}
-                setDataSave={setDataSave}
-                loader={loader}
-                submitBtn={submitBtn}
-                save={save}
-                setUserName={setUserName}
-              />
-            </>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <About menuActive={menuActive} setMenuActive={setMenuActive} />
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <Contact setMenuActive={setMenuActive} menuActive={menuActive} />
-          }
-        />
-        <Route
-          path="/profile/:id"
-          element={
-            <Profile
-              setDataSave={setDataSave}
-              setMenuActive={setMenuActive}
-              setClickedId={setClickedId}
-              menuActive={menuActive}
-              clickedId={clickedId}
-              goToTop={goToTop}
-              userName={userName}
+              }
             />
-          }
-        />
-      </Routes>
+            <Route
+              path="/about"
+              element={
+                <About menuActive={menuActive} setMenuActive={setMenuActive} />
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <Contact
+                  setMenuActive={setMenuActive}
+                  menuActive={menuActive}
+                />
+              }
+            />
+            <Route
+              path="/profile/:id"
+              element={
+                <Profile
+                  setDataSave={setDataSave}
+                  setMenuActive={setMenuActive}
+                  setClickedId={setClickedId}
+                  menuActive={menuActive}
+                  clickedId={clickedId}
+                  goToTop={goToTop}
+                  userName={userName}
+                />
+              }
+            />
+          </Routes>
+        </>
+      )}
     </>
   );
 }

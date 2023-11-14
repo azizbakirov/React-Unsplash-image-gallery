@@ -1,12 +1,16 @@
 import Card from "./Card/Card";
 import style from "./style.module.scss";
 import { motion } from "framer-motion";
-import Loading from "../Loading/Loading";
-import { useState } from "react";
-import CardModal from "../Modal/CardModal/CardModal";
+import { Loading } from "../../Assets/Index";
 
-function Main({setUserName, loader, save, setDataSave, clickedId, setClickedId }) {
-
+function Main({
+  setUserName,
+  loader,
+  save,
+  setDataSave,
+  clickedId,
+  setClickedId,
+}) {
   return (
     <div className="container">
       <motion.div className={style.card}>

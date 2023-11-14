@@ -25,7 +25,14 @@ function Main({
           />
         ))}
       </motion.div>
-      <div className={style.load}>{loader ? <Loading /> : ""}</div>
+      <div
+        className={style.load}
+        style={
+          loader ? { transform: `translateY(0%)` } : { transform: `translateY(100%)` }
+        }
+      >
+        <Loading />{" "}
+      </div>
     </div>
   );
 }

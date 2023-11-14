@@ -16,7 +16,9 @@
     width: 100%;
     left: 0;
     right: 0;
-    top: 96%;
+    top: 95%;
     z-index: 15;
+    transform: translateY(100%);
     overflow-x: hidden;
+    transition: all .5s ease;
 }

@@ -74,6 +74,11 @@
         }
 
     }
+
+    .charts{
+        margin: 77px 0;
+    }
+
     .user_image{
         display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -81,5 +86,6 @@
             grid-auto-flow: dense;
             margin-top: 2rem;
     }
+    
 
 }

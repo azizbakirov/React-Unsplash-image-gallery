@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "IcHl7zXAYsrJd5R0rB_SZ34fFquPdsGXRM_tgiMaDPg";
+const API_KEY = "dC39DxZ_3YgJRYVYkIxg8WU3TSULdpXkEmiDsEtWEP0";
 
 const data = axios.create({
   baseURL: "https://api.unsplash.com",

@@ -4,6 +4,7 @@ import DynamicNavbar from "../../Header/DynamicNavbar/DynamicNavbar";
 import Card from "../../Main/Card/Card";
 import style from "./profile.module.scss";
 import { SpinnerLoading } from "../../../Assets";
+import StatisticChart from "./Charts/StatisticChart";
 
 function Profile({
   setMenuActive,
@@ -78,6 +79,11 @@ function Profile({
                 </div>
               </div>
             </div>
+
+            <div className={style.charts}>
+              <StatisticChart />
+            </div>
+
             <div className={style.user_image}>
               {user?.tags?.aggregated?.map((data, idx) => (
                 <>

@@ -29,7 +29,7 @@ function Main({
         className={style.load}
         style={
           loader ? { transform: `translateY(0%)`,
-          bottom: "0" } : { transform: `translateY(200%)`, bottom: "-50%"}
+          bottom: "0" } : { transform: `translateY(200%)`, bottom: "-100%"}
         }
       >
         <Loading />{" "}

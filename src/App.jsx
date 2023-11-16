@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Header from "./Components/Header/Header";
-import Menu from "./Components/Header/MenuBurger/Menu";
-import Nav from "./Components/Header/Navbar/Nav";
-import Main from "./Components/Main/Main";
-import CardModal from "./Components/Modal/CardModal/CardModal";
-import About from "./Components/Pages/About/About";
-import Contact from "./Components/Pages/Contact/Contact";
-import Profile from "./Components/Pages/Profile/Profile";
+import Header from "./Components/Header/Header.jsx";
+import Menu from "./Components/Header/MenuBurger/Menu.jsx";
+import Nav from "./Components/Header/Navbar/Nav.jsx";
+import Main from "./Components/Main/Main.jsx";
+import CardModal from "./Components/Modal/CardModal/CardModal.jsx";
+import About from "./Components/Pages/About/About.jsx";
+import Contact from "./Components/Pages/Contact/Contact.jsx";
+import Profile from "./Components/Pages/Profile/Profile.jsx";
 import { GetAllPhotos } from "./Services/Unsplash.service";
-import { SpinnerLoading } from "./Assets";
+import SpinnerLoading from "./Assets/Loading/Spinner/Spinner";
 
 function App() {
   const [page, setPage] = useState(1); //data page value

@@ -28,7 +28,8 @@ function Main({
       <div
         className={style.load}
         style={
-          loader ? { transform: `translateY(0%)` } : { transform: `translateY(100%)` }
+          loader ? { transform: `translateY(0%)`,
+          bottom: "0" } : { transform: `translateY(200%)`, bottom: "-50%"}
         }
       >
         <Loading />{" "}

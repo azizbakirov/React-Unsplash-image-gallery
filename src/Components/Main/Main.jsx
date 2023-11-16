@@ -1,7 +1,7 @@
 import Card from "./Card/Card";
 import style from "./style.module.scss";
 import { motion } from "framer-motion";
-import { Loading } from "../../Assets/Index";
+import Loading from "../../Assets/Loading/Loading";
 
 function Main({
   setUserName,

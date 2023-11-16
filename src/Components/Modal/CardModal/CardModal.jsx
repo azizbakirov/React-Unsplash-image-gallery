@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { GetAllPhotos } from "../../../Services/Unsplash.service";
 import style from "./modal.module.scss";
-import { SpinnerLoading } from "../../../Assets";
 import RelatedImage from "./Related/RelatedImage";
 
 function CardModal({ dataSave, setDataSave, setClickedId, clickedId }) {
